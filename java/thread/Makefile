@@ -40,8 +40,23 @@ JC = javac
 
 CLASSES = \
 	MultiThread.java \
-	Priority.java
-
+	Priority.java \
+	SleepUtils.java \
+	ThreadState.java \
+	Daemon.java \
+	Interrupted.java \
+	Shutdown.java \
+	Synchronized.java \
+	WaitNotify.java \
+	Piped.java \
+	Join.java \
+	Profiler.java \
+	ConnectionPool.java \
+	ConnectionDriver.java \
+	ConnectionPoolTest.java \
+	ThreadPool.java \
+	DefaultThreadPool.java \
+	SimpleHttpServer.java
 
 #
 # the default make target entry
