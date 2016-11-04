@@ -40,7 +40,11 @@ JC = javac
 
 CLASSES = \
 	Mutex.java \
-	BoundedQueue.java
+	BoundedQueue.java \
+	TwinsLock.java \
+	TwinsLockTest.java \
+	FairAndUnfairTest.java \
+	Cache.java
 
 #
 # the default make target entry
