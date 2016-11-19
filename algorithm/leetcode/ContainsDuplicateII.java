@@ -1,34 +1,21 @@
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 public class ContainsDuplicateII {
 
     public boolean containsDuplicate(int[] nums, int k) {
-        Map<Integer, Integer> freqs = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
 
         for(int i = 0; i < nums.length; i++) {
             int num = nums[i];
-            int freq = 0;
 
             if(i > k) {
-                int out = nums[i - k - 1];
-                freq = freqs.getOrDefault(out, 0);
-                if(--freq == 0) {
-                    freqs.remove(out);
-                } else {
-                    freqs.put(out, freq);
-                }
+                set.remove(nums[i - k - 1]);
             }
 
-            if(freqs.containsKey(num)) {
-                freq = freqs.get(num);
-                freqs.put(num, ++freq);
-                if(freq > 1) return true;
-            } else {
-                freqs.put(num, 1);
-            }
-
+            if(set.contains(num)) return true;
+            set.add(num);
         }
 
         return false;
