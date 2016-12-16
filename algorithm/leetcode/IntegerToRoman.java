@@ -12,8 +12,10 @@ public class IntegerToRoman {
         int i = 0;
         while(num > 0 && i < symbol.length) {
             while(num >= values[i]) {
-                num -= values[i];
-                buffer.append(symbol[i]);
+                int count = num / values[i];
+                num %= values[i];
+                for(int j = 0; j < count; j++)
+                    buffer.append(symbol[i]);
             }
             i++;
         }
