@@ -1,6 +1,49 @@
 public class AddTwoNumbersII {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int len1 = length(l1);
+        int len2 = length(l2);
+        int len = Math.max(len1, len2);
+
+        ListNode head = null, tail = null;
+        head = new ListNode(0);
+        tail = head;
+        while(len != 0) {
+            tail.next = new ListNode(0);
+            tail = tail.next;
+            if(len <= len1) {
+                tail.val += l1.val;
+                l1 = l1.next;
+            }
+            if(len <= len2) {
+                tail.val += l2.val;
+                l2 = l2.next;
+            }
+            len--;
+        }
+        print(head);
+
+        tail = head;
+        while(tail != null) {
+            ListNode p = tail.next;
+            while(p != null && p.val == 9) {
+                p = p.next;
+            }
+            if(p != null && p.val > 9) {
+                while(tail != p) {
+                    tail.val += 1;
+                    tail = tail.next;
+                    tail.val -= 10;
+                }
+            } else {
+                tail = p;
+            }
+        }
+
+        return (head.val == 0) ? head.next : head;
+    }
+
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
         l1 = reverse(l1);
         l2 = reverse(l2);
         int sum = 0;
@@ -61,6 +104,15 @@ public class AddTwoNumbersII {
         return prev;
     }
 
+    private int length(ListNode head) {
+        int len = 0;
+        while(head != null) {
+            len++;
+            head = head.next;
+        }
+        return len;
+    }
+
     public static void main(String[] args) {
         int num1 = 7243;
         int num2 = 564;
@@ -78,6 +130,9 @@ public class AddTwoNumbersII {
     private static void print(ListNode head) {
         while(head != null) {
             System.out.print(head.val);
+            if(head.next != null) {
+                System.out.print(" -> ");
+            }
             head = head.next;
         }
         System.out.println();
