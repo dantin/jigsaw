@@ -1,6 +1,10 @@
 public class BulbSwitcher {
 
     public int bulbSwitch(int n) {
+        return (int) Math.sqrt(n);
+    }
+
+    public int bulbSwitch1(int n) {
         int ans = 1;
         while (ans * ans <= n) ans++;
         return ans - 1;
