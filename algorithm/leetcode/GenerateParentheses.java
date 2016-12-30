@@ -5,13 +5,13 @@ public class GenerateParentheses {
 
     public List<String> generateParentheses(int n) {
         List<String> ans = new LinkedList<>();
-        String sample = new String();
+        StringBuilder sample = new StringBuilder();
 
         dfs(ans, sample, n, n);
         return ans;
     }
 
-    private void dfs(List<String> collection, String sample, int left, int right) {
+    private void dfs(List<String> collection, StringBuilder sample, int left, int right) {
         if (left > right) {
             return;
         }
@@ -22,11 +22,17 @@ public class GenerateParentheses {
         }
 
         if (left > 0) {
-            dfs(collection, sample + "(", left - 1, right);
+            sample.append('(');
+            dfs(collection, sample, left - 1, right);
+            int last = sample.length() - 1;
+            sample.deleteCharAt(last);
         }
 
         if (right > 0) {
-            dfs(collection, sample + ")", left, right - 1);
+            sample.append(')');
+            dfs(collection, sample, left, right - 1);
+            int last = sample.length() - 1;
+            sample.deleteCharAt(last);
         }
     }
 
