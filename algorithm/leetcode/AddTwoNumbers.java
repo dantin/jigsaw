@@ -23,16 +23,14 @@ public class AddTwoNumbers {
             }
 
             ListNode n = new ListNode(sum % 10);
+            remaining = sum / 10;
             if (head == null) {
                 head = n;
-            }
-            if (tail == null) {
                 tail = n;
             } else {
                 tail.next = n;
                 tail = tail.next;
             }
-            remaining = sum / 10;
         }
 
         return head;
