@@ -14,21 +14,30 @@ public class HouseRobber {
         return dp.peekLast();
     }
 
-    public int rob(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0];
-        int res = Math.max(nums[0], nums[1]);
-        if (nums.length == 2) return res;
+    public int rob2(int[] nums) {
+        int odd = 0, even = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i % 2 == 0) {
+                even += nums[i];
+                even = Math.max(odd, even);
+            } else {
+                odd += nums[i];
+                odd = Math.max(odd, even);
+            }
+        }
+        return Math.max(odd, even);
+    }
 
-        int hist = nums[0];
-        int pre = res;
-        for (int i = 2; i < nums.length; i++) {
-            res = Math.max(hist + nums[i], pre);
+    public int rob(int[] nums) {
+        int ans = 0;
+        int hist = 0, pre = 0;
+        for (int i = 0; i < nums.length; i++) {
+            ans = Math.max(hist + nums[i], pre);
             hist = pre;
-            pre = res;
+            pre = ans;
         }
 
-        return Math.max(res, pre);
+        return Math.max(ans, pre);
     }
 
     public static void main(String[] args) {
