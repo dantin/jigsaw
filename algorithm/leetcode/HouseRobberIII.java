@@ -1,9 +1,32 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HouseRobberIII {
 
     public int rob(TreeNode root) {
+        Map<TreeNode, Integer> cache = new HashMap<>();
+        return dfs(root, cache);
+    }
+
+    private int dfs(TreeNode root, Map<TreeNode, Integer> cache) {
+        if (root == null) return 0;
+        if (cache.containsKey(root)) return cache.get(root);
+        int val = 0;
+        if (root.left != null) {
+            val += dfs(root.left.left, cache) + dfs(root.left.right, cache);
+        }
+        if (root.right != null) {
+            val += dfs(root.right.left, cache) + dfs(root.right.right, cache);
+        }
+
+        val = Math.max(root.val + val, dfs(root.left, cache) + dfs(root.right, cache));
+        cache.put(root, val);
+        return val;
+    }
+
+    public int rob1(TreeNode root) {
         if (root == null) return 0;
         int val = 0;
         if (root.left != null) {
