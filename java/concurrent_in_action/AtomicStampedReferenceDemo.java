@@ -3,7 +3,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
 public class AtomicStampedReferenceDemo {
     public static void main(String[] args) {
         AtomicStampedReference<Integer> money = new AtomicStampedReference<>(19, 0);
-        
+
         // 充值线程
         for (int i = 0; i < 3; i++) {
             final int timestamp = money.getStamp();
