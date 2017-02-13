@@ -1,9 +1,8 @@
 import java.util.concurrent.atomic.AtomicReference;
 
-public class AbaDemo {
-    static AtomicReference<Integer> money = new AtomicReference<>();
-
+public class AtomicReferenceDemo {
     public static void main(String[] args) {
+        AtomicReference<Integer> money = new AtomicReference<>();
         money.set(19);
 
         // 充值线程
