@@ -1,4 +1,4 @@
-public class FutureDemo {
+public class FuturePatternDemo {
     public static void main(String[] args) {
         Client client = new Client();
 
