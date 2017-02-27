@@ -1,5 +1,9 @@
 import java.util.Vector;
 
+/**
+ * java -Xmx20m -Xms5m -XX:+HeapDumpOnOutOfMemoryError DumpOOM
+ * java -Xmx20m -Xms5m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./a.dump DumpOOM
+ */
 public class DumpOOM {
     public static void main(String[] args) {
         Vector<byte[]> v = new Vector<>();
