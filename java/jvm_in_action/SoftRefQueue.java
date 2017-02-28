@@ -1,12 +1,9 @@
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 
-<<<<<<< HEAD
 /**
  * java -Xmx10m SoftRefQueue
  */
-=======
->>>>>>> bca64586ca673167dac643538b43df33f04e59d8
 public class SoftRefQueue {
     public static class User {
         public int id;
