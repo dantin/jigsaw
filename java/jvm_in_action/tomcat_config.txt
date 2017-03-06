@@ -1,0 +1,3 @@
+export CATALINA_OPTS="-Xloggc:/usr/local/tomcat/apache-tomcat-7.0.75/logs/gc.log -XX:+PrintGCDetails -Xmx32M -Xms32M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseSerialGC -XX:PermSize=32M"
+
+export CATALINA_OPTS="-Xloggc:/usr/local/tomcat/apache-tomcat-7.0.75/logs/gc.log -XX:+PrintGCDetails -Xmx512M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseSerialGC -XX:MaxPermSize=32M"
